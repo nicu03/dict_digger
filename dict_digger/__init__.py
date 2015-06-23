@@ -13,7 +13,8 @@ def dig(your_dict, *keys, **kwargs):
     for key in keys:
         if isinstance(end_of_chain, dict) and key in end_of_chain:
             end_of_chain = end_of_chain[key]
-        elif isinstance(end_of_chain, (list, tuple)) and isinstance(key, int):
+        elif isinstance(end_of_chain, (list, tuple)) and isinstance(key, int) \
+                and key < len(end_of_chain):
             end_of_chain = end_of_chain[key]
         else:
             if 'fail' in kwargs and kwargs['fail'] is True:
